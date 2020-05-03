@@ -1,7 +1,7 @@
-FROM alpine:3.11 as builder
+FROM golang:1.14.2-alpine as builder
 WORKDIR /root/
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
-    && apk add --no-cache go gcc libc-dev git\
+    && apk add --no-cache gcc libc-dev git\
     && export PATH=/root/go/bin:$PATH \
     && go env -w GO111MODULE=on \
     && go env -w GOPROXY=https://goproxy.cn,direct \
