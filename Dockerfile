@@ -7,7 +7,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     && git clone https://github.com/liuzhuoling2011/BaiduPCS-Go.git \
     && cd /root/BaiduPCS-Go \
     && echo "=> start compile" \
-    && GOOS=linux GOARCH=arm CGO_ENABLED=0 go build -o /root/main \
+    && GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o /root/main \
     && echo "=> compile end" \
     && cd /root \
     && go get github.com/GeertJohan/go.rice/rice \
