@@ -19,7 +19,8 @@ WORKDIR /root/
 COPY --from=builder /root/main .
 RUN echo "=> init file" \
     && mkdir /downloads \
-    && echo "./main config set -savedir=/downloads; exec \"$@\"" > ./docker-entrypoint.sh
+    && echo "./main config set -savedir=/downloads; exec \"$@\"" > ./docker-entrypoint.sh \
+    && chmod +x ./docker-entrypoint.sh
 VOLUME [ "/download" ]
 ENTRYPOINT [ "./docker-entrypoint.sh" ]
 CMD [ "./main" ]
