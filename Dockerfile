@@ -1,7 +1,6 @@
 FROM golang:1.14.2-alpine as builder
 WORKDIR /root/
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
-    && apk add --no-cache gcc libc-dev git\
+RUN apk add --no-cache gcc libc-dev git \
     && go env -w GO111MODULE=on \
     && go env -w GOPROXY=https://goproxy.cn,direct \
     && git clone https://github.com/liuzhuoling2011/BaiduPCS-Go.git \
