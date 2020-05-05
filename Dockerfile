@@ -17,10 +17,6 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 FROM arm32v7/alpine:3.11
 WORKDIR /root/
 COPY --from=builder /root/main .
-RUN echo "=> init file" \
-    && mkdir /downloads \
-    && echo "./main config set -savedir=/downloads; exec \"$@\"" > ./docker-entrypoint.sh \
-    && chmod +x ./docker-entrypoint.sh
-VOLUME [ "/download" ]
-# ENTRYPOINT [ "./docker-entrypoint.sh" ]
+COPY ./docker-entrypoint.sh .
+ENTRYPOINT [ "./docker-entrypoint.sh" ]
 CMD [ "./main" ]
