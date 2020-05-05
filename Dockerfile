@@ -22,5 +22,5 @@ RUN echo "=> init file" \
     && echo "./main config set -savedir=/downloads; exec \"$@\"" > ./docker-entrypoint.sh \
     && chmod +x ./docker-entrypoint.sh
 VOLUME [ "/download" ]
-ENTRYPOINT [ "./docker-entrypoint.sh" ]
+# ENTRYPOINT [ "./docker-entrypoint.sh" ]
 CMD [ "./main" ]
