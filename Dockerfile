@@ -14,7 +14,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     && echo "=> start pack static" \
     && rice append -i ./BaiduPCS-Go/internal/pcsweb --exec ./main
 
-FROM alpine:3.11 
+FROM arm32v7/alpine:3.11
 WORKDIR /root/
 COPY --from=builder /root/main .
 RUN echo "=> init file" \
